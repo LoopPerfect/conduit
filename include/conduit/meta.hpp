@@ -1,7 +1,7 @@
 #ifndef CONDUIT_META_HPP
 #define CONDUIT_META_HPP
 
-#include<type_traits>
+#include <type_traits>
 #define FWD(x) std::forward<decltype(x)>(x)
 
 namespace conduit {

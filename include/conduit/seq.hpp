@@ -59,9 +59,7 @@ struct iterator {
     return done() != rhs.done();
   }
 
-  T operator*() const {
-    return handle.promise().value;
-  }
+  T operator*() const { return handle.promise().value; }
 
   T const* operator->() const { return &(operator*()); }
 };
@@ -79,7 +77,10 @@ struct seq {
 
   iterator_type end() { return {nullptr}; }
 
-  seq(seq<T>&& rhs) : p(rhs.p) { rhs.p = nullptr; }
+  seq(seq<T>&& rhs)
+    : p(rhs.p) {
+    rhs.p = nullptr;
+  }
 
   ~seq() {
     if (p)
