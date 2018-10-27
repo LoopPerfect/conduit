@@ -41,21 +41,15 @@ struct iterator {
 
   T&& take() { return std::move(handle.promise().value); }
 
-  constexpr T const& value() const noexcept {
-    return handle.promise().value;
-  }
+  constexpr T const& value() const noexcept { return handle.promise().value; }
 
-  constexpr bool done() const noexcept {
-    return !handle || handle.done();
-  }
+  constexpr bool done() const noexcept { return !handle || handle.done(); }
 
-  constexpr bool operator==(iterator const& rhs) const
-    noexcept {
+  constexpr bool operator==(iterator const& rhs) const noexcept {
     return done() == rhs.done();
   }
 
-  constexpr bool operator!=(iterator const& rhs) const
-    noexcept {
+  constexpr bool operator!=(iterator const& rhs) const noexcept {
     return done() != rhs.done();
   }
 

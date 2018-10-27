@@ -1,6 +1,8 @@
 #ifndef CONDUIT_COMPOSE_HPP
 #define CONDUIT_COMPOSE_HPP
 
+#include "meta.hpp"
+
 namespace conduit {
 
 template <class X, class F>
@@ -16,10 +18,9 @@ auto evaluate(X&& x, F f, Fs&&... fs)
 
 template <class... Fs>
 auto compose(Fs&&... fs) {
-  return
-    [=](auto&& x) -> decltype(evaluate(FWD(x), fs...)) {
-      return evaluate(FWD(x), fs...);
-    };
+  return [=](auto&& x) -> decltype(evaluate(FWD(x), fs...)) {
+    return evaluate(FWD(x), fs...);
+  };
 }
 
 namespace operators {
