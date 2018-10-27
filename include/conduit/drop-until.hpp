@@ -6,9 +6,9 @@
 
 namespace conduit {
 namespace F {
-auto dropUntil = [](auto g, auto f) -> seq<decltype(id(*g.begin()))> {
-  auto it = g.begin();
-  auto e = g.end();
+auto dropUntil = [](auto xs, auto f) -> seq<decltype(id(first(xs)))> {
+  auto it = xs.begin();
+  auto e = xs.end();
 
   while (it != e) {
     auto x = *it;
@@ -26,8 +26,8 @@ auto dropUntil = [](auto g, auto f) -> seq<decltype(id(*g.begin()))> {
 }
 
 auto dropUntil = [](auto&& f) {
-  return [f](auto&& g) { 
-    return F::dropUntil(FWD(g), f); 
+  return [f](auto&& xs) { 
+    return F::dropUntil(FWD(xs), f); 
   };
 };
 

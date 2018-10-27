@@ -6,14 +6,18 @@
 
 namespace conduit {
 namespace F {
-auto map = [](auto g, auto f) -> seq<decltype(id(f(*g.begin())))> {
-  for (auto x : g) {
+auto map = [](auto xs, auto f) -> seq<decltype(id(f(first(xs))))> {
+  for (auto x : xs) {
     co_yield f(x);
   }
 };
 }
 
-auto map = [](auto&& f) { return [f](auto&& g) { return F::map(FWD(g), f); }; };
+auto map = [](auto&& f) { 
+  return [f](auto&& xs) { 
+    return F::map(FWD(xs), f); 
+  }; 
+};
 
 } // namespace conduit
 

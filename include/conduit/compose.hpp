@@ -24,10 +24,10 @@ auto compose(Fs&&... fs) {
 }
 
 namespace operators {
-template <class G, class F>
-auto operator>>(G&& g, F&& f)
-  -> decltype(g.begin(), f(FWD(g)).begin(), f(FWD(g))) {
-  return f(FWD(g));
+template <class Xs, class F>
+auto operator>>(Xs&& xs, F&& f)
+  -> decltype(xs.begin(), f(FWD(xs)).begin(), f(FWD(xs))) {
+  return f(FWD(xs));
 }
 
 } // namespace operators

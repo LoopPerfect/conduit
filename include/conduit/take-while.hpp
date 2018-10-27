@@ -6,8 +6,8 @@
 
 namespace conduit {
 namespace F {
-auto takeWhile = [](auto g, auto f) -> seq<decltype(id(*g.begin()))> {
-  for (auto x: g) {
+auto takeWhile = [](auto xs, auto f) -> seq<decltype(first(xs))> {
+  for (auto x: xs) {
     if (!f(x)) 
       break;
     co_yield x;
@@ -16,8 +16,8 @@ auto takeWhile = [](auto g, auto f) -> seq<decltype(id(*g.begin()))> {
 }
 
 auto takeWhile = [](auto&& f) {
-  return [f](auto&& g) { 
-    return F::takeWhile(FWD(g), f); 
+  return [f](auto&& xs) { 
+    return F::takeWhile(FWD(xs), f); 
   };
 };
 

@@ -6,8 +6,8 @@
 
 namespace conduit {
 namespace F {
-auto filter = [](auto g, auto f) -> seq<decltype(id(*g.begin()))> {
-  for (auto x : g) {
+auto filter = [](auto xs, auto f) -> seq<decltype(first(xs))> {
+  for (auto x : xs) {
     if (f(x))
       co_yield x;
   }
@@ -15,8 +15,8 @@ auto filter = [](auto g, auto f) -> seq<decltype(id(*g.begin()))> {
 }
 
 auto filter = [](auto&& f) {
-  return [f](auto&& g) { 
-    return F::filter(FWD(g), f); 
+  return [f](auto&& xs) { 
+    return F::filter(FWD(xs), f); 
   };
 };
 

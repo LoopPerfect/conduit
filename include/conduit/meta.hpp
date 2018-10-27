@@ -11,6 +11,12 @@ T id(T const& x) {
   return x;
 }
 
+
+template <class T>
+auto first(T&& xs) -> decltype(id(*xs.begin())) {
+  return *xs.begin();
+}
+
 } // namespace conduit
 
 #endif
