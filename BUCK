@@ -11,6 +11,7 @@ cxx_library(
     '-lc++'
   ], 
   exported_headers = subdir_glob([
+    ("include", "**/*.h"),
     ("include", "**/*.hpp")
   ])
 )
