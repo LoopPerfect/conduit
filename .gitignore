@@ -1,0 +1,5 @@
+.buckd
+buck-out
+BUCKAROO_DEPS
+.buckconfig.local
+buckaroo

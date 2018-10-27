@@ -1,0 +1,7 @@
+cxx_test(
+  name = 'test',
+  srcs = glob(['*.cpp']),
+  compiler_flags = ['-fPIC', '-pthread'],
+  linker_flags = ['-pthread'],
+  deps = ['//:conduit', 'google.gtest//:gtest']
+)

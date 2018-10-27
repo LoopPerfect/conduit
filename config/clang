@@ -1,0 +1,6 @@
+[cxx]
+cxxpp = /usr/bin/clang++-6.0
+cxx = /usr/bin/clang++-6.0
+ld = /usr/bin/clang++-6.0
+cxxflags = -fcoroutines-ts -stdlib=libc++ -std=c++17 -Wall -Wpedantic
+cxxlinkerflags = -lc++
