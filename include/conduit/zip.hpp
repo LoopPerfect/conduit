@@ -34,8 +34,8 @@ auto zip(F&&f, Xs&&...xs) -> seq<decltype(id(f(first(xs)...)))> {
       FWD(f),
       std::tuple<
         decltype(id(xs)),
-        decltype(id(xs).begin()),
-        decltype(id(xs).end())> {
+        decltype(id(xs.begin())),
+        decltype(id(xs.end()))> {
           std::move(xs), 
           xs.begin(), 
           xs.end()
@@ -45,12 +45,12 @@ auto zip(F&&f, Xs&&...xs) -> seq<decltype(id(f(first(xs)...)))> {
 }
 
 
-auto zip = [](auto&&f, auto&&...xs) {
+auto zip = [](auto&&f, auto&&...xs) -> decltype( F::zip(FWD(f), FWD(xs)...) ){
   return F::zip(FWD(f), FWD(xs)...);
 };
 
 auto zipWith = [](auto&&xs, auto f) {
-  return [xs = FWD(xs), f](auto&& ys) {
+  return [xs = FWD(xs), f](auto&& ys) mutable {
     return zip(std::move(f), std::move(xs), FWD(ys));
   };
 };
