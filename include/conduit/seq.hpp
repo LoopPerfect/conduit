@@ -4,7 +4,7 @@
 #include <experimental/coroutine>
 #include <type_traits>
 #include <cassert>
-#include <iostream>
+#include "meta.hpp"
 
 namespace conduit {
 
@@ -19,8 +19,8 @@ struct promise {
 
   template <class U>
   auto yield_value(U&&value)
-    -> decltype((this->value = value), suspend_always{}) {
-    this->value = std::move(value);
+    -> decltype((this->value = FWD(value)), suspend_always{}) {
+    this->value = FWD(value);
     return {};
   }
 
@@ -60,7 +60,8 @@ struct iterator {
     return done() != rhs.done();
   }
 
-  T operator*() const { return handle.promise().value; }
+  T const& operator*() const { return handle.promise().value; }
+  T& operator*() { return handle.promise().value; }
 
   T const* operator->() const { return &(operator*()); }
 };
@@ -102,7 +103,7 @@ struct seq {
     return !p.done();
   }
 
-//private:
+private:
   friend struct promise<T>;
   seq(promise_type* promise)
     : p{coroutine_handle<promise_type>::from_promise(*promise)} 
