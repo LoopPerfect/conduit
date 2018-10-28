@@ -25,8 +25,8 @@ TEST(Seq, zip) {
 TEST(Seq, zipWith) {
   using namespace operators; 
   auto values = count(0) 
-    >> zipWith(count(0), [](auto x, auto y) { return x+y; })
-    >> zipWith(count(0), [](auto x, auto y) { return x+y; });
+    >> zipWith(factory(count, 0), [](auto x, auto y) { return x+y; })
+    >> zipWith(factory(count, 0), [](auto x, auto y) { return x+y; });
  
   auto i = 0;
   for (auto x : values) {

@@ -5,9 +5,9 @@
 
 namespace conduit {
 
-auto endsWith = [](auto&&xs) {
-  return [xs = FWD(xs)](auto&& ys) mutable { 
-    return F::concat(FWD(ys), std::move(xs)); 
+auto endsWith = [](auto...xsf) {
+  return [=](auto&& ys) { 
+    return F::concat(FWD(ys), xsf()...); 
   };
 };
 

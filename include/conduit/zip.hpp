@@ -49,9 +49,9 @@ auto zip = [](auto&&f, auto&&...xs) -> decltype( F::zip(FWD(f), FWD(xs)...) ){
   return F::zip(FWD(f), FWD(xs)...);
 };
 
-auto zipWith = [](auto&&xs, auto f) {
-  return [xs = FWD(xs), f](auto&& ys) mutable {
-    return zip(std::move(f), std::move(xs), FWD(ys));
+auto zipWith = [](auto g, auto f) {
+  return [g, f](auto&& ys) {
+    return zip(f, g(), FWD(ys));
   };
 };
 

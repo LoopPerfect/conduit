@@ -5,9 +5,9 @@
 
 namespace conduit {
 
-auto startsWith = [](auto&&xs) {
-  return [xs = FWD(xs)](auto&& ys) mutable { 
-    return F::concat(std::move(xs), FWD(ys)); 
+auto startsWith = [](auto...xsf) {
+  return [=](auto&& ys) mutable { 
+    return F::concat(xsf()..., FWD(ys)); 
   };
 };
 
