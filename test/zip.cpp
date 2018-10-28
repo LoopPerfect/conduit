@@ -21,7 +21,6 @@ TEST(Seq, zip) {
   EXPECT_EQ(i, 4);
 }
 
-
 TEST(Seq, zipWith) {
   using namespace operators; 
   auto values = count(0) 
