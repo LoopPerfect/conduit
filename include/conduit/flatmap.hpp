@@ -9,8 +9,8 @@ namespace F {
 auto flatMap = [](auto xs, auto f) 
   -> seq<decltype(first(f(first(xs))))> {
   for (auto x : xs) {
-    for(auto y: f(x)) {
-      co_yield y;
+    for(auto&& y: f(x)) {
+      co_yield std::move(y);
     }
   }
 };

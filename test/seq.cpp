@@ -3,14 +3,14 @@
 
 using namespace conduit;
 
-auto test1() -> seq<int> {
+auto seq1() -> seq<int> {
   co_yield 1;
   co_yield 2;
   co_yield 3;
 }
 
 TEST(Seq, Next) {
-  auto values = test1();
+  auto values = seq1();
 
   int i = 1;
   while (values.next()) {
@@ -22,7 +22,7 @@ TEST(Seq, Next) {
 
 TEST(Seq, foreach) {
   int i = 1;
-  for (auto x : test1()) {
+  for (auto x : seq1()) {
     EXPECT_EQ(i, x);
     ++i;
   }

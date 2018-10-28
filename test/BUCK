@@ -1,4 +1,4 @@
-cxx_test(
+cxx_binary(
   name = 'test',
   srcs = glob(['*.cpp']),
   compiler_flags = ['-fPIC', '-pthread'],

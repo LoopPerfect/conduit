@@ -13,7 +13,7 @@ auto map = [](auto xs, auto f) -> seq<decltype(id(f(first(xs))))> {
 };
 }
 
-auto map = [](auto&& f) { 
+auto map = [](auto f) { 
   return [f](auto&& xs) { 
     return F::map(FWD(xs), f); 
   }; 

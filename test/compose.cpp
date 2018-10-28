@@ -1,16 +1,17 @@
 #include "gtest/gtest.h"
+
 #include <conduit/compose.hpp>
 #include <conduit/count.hpp>
 #include <conduit/map.hpp>
+#include <vector>
 
 using namespace conduit;
-
 TEST(Seq, compose) {
   auto i = 0;
 
   auto transform = compose(
     map([](auto x) { return x + 1; }),
-    map([](auto x) { return x + 1; }), 
+    map([](auto x) { return x + 1; }),
     map([](auto x) { return x + 1; })
   );
  
@@ -29,16 +30,16 @@ TEST(Seq, composeTree) {
 
   auto T1 = compose(
     map([](auto x) { return x + 1; }),
-    map([](auto x) { return x + 1; }), 
+    map([](auto x) { return x + 1; }),
     map([](auto x) { return x + 1; })
   );
 
-  auto T2 = compose(T1, T1);
+  auto T2 = compose(T1, T1, T1);
 
-  auto transform = compose(T2, T2);
+  auto values = T2(count(0));
 
-  for (auto x : transform(count(0))) {
-    EXPECT_EQ(i + 12, x);
+  while(values.next()) {
+  EXPECT_EQ(i + 9, values.get());
     if (i > 3)
       break;
     ++i;

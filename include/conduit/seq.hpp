@@ -3,6 +3,8 @@
 
 #include <experimental/coroutine>
 #include <type_traits>
+#include <cassert>
+#include <iostream>
 
 namespace conduit {
 
@@ -16,18 +18,20 @@ struct promise {
   T value;
 
   template <class U>
-  auto yield_value(U value)
+  auto yield_value(U&&value)
     -> decltype((this->value = value), suspend_always{}) {
-    this->value = value;
+    this->value = std::move(value);
     return {};
   }
 
-  suspend_always initial_suspend() { return {}; }
-  suspend_always final_suspend() { return {}; }
-  seq<T> get_return_object() { return {this}; };
+  constexpr suspend_always initial_suspend()const { return {}; }
+  constexpr suspend_always final_suspend()const { return {}; }
+  constexpr seq<T> get_return_object() noexcept {
+    return {this}; 
+  };
 
-  void unhandled_exception() { std::terminate(); }
-  void return_void() {}
+  void unhandled_exception() const { std::terminate(); }
+  void return_void() const {}
 };
 
 template <class T>
@@ -35,13 +39,16 @@ struct iterator {
   coroutine_handle<promise<T>> handle;
 
   iterator& operator++() {
-    handle.resume();
+    assert(handle != nullptr);
+    assert(!handle.done());
+    if(handle)
+      handle.resume();
     return *this;
   }
 
   T&& take() { return std::move(handle.promise().value); }
 
-  constexpr T const& value() const noexcept { return handle.promise().value; }
+  constexpr T value() const noexcept { return handle.promise().value; }
 
   constexpr bool done() const noexcept { return !handle || handle.done(); }
 
@@ -58,27 +65,29 @@ struct iterator {
   T const* operator->() const { return &(operator*()); }
 };
 
-template <typename T>
+template <class T>
 struct seq {
   using iterator_type = iterator<T>;
   using promise_type = promise<T>;
   using handle_type = coroutine_handle<promise_type>;
 
   iterator_type begin() {
-    p.resume();
+    if (p) p.resume();
     return {p};
   }
 
   iterator_type end() { return {nullptr}; }
 
+  seq(seq<T> const&) = delete;
   seq(seq<T>&& rhs)
     : p(rhs.p) {
-    rhs.p = nullptr;
+      rhs.p = nullptr;
   }
 
   ~seq() {
-    if (p)
+    if (p) {
       p.destroy();
+    }
   }
 
   T&& take() { return std::move(p.promise().value); }
@@ -87,12 +96,17 @@ struct seq {
   T& get() { return p.promise().value; }
 
   bool next() {
+    assert(p != nullptr);
+    assert(!p.done());
     p.resume();
     return !p.done();
   }
 
-  seq(promise_type* p)
-    : p{coroutine_handle<promise_type>::from_promise(*p)} {}
+//private:
+  friend struct promise<T>;
+  seq(promise_type* promise)
+    : p{coroutine_handle<promise_type>::from_promise(*promise)} 
+  {}
 
   coroutine_handle<promise_type> p;
 };
