@@ -1,7 +1,7 @@
 #ifndef CONDUIT_COMPOSE_HPP
 #define CONDUIT_COMPOSE_HPP
 
-#include "meta.hpp"
+#include <conduit/meta.hpp>
 
 namespace conduit {
 
