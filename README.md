@@ -16,7 +16,7 @@ These are attained by adopting a monadic interface that leverages zero-cost abst
 
 ## Examples
 
-Use `co_yield` to define a coroutine and transform it using high level operators.
+Use `co_yield` to define a coroutine and transform it using high-level operators.
 
 ```c++
 using namespace std;
@@ -45,7 +45,7 @@ for(auto [i, n] : items) {
 
 ```
 
-Construct elaborate algorithms using high level operators:
+Construct elaborate algorithms using high-level operators:
 
 ```c++
 #define RET(X) { return X; }
