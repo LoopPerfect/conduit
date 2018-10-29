@@ -5,9 +5,6 @@ cxx_library(
     ('include/conduit', '**/*.h'), 
     ('include/conduit', '**/*.hpp'), 
   ]), 
-  exported_linker_flags = [
-    '-lc++', 
-  ], 
   licenses = [
     'LICENSE', 
   ], 
