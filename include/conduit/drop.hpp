@@ -9,9 +9,11 @@ namespace F {
 template<class Xs>
 auto drop(Xs xs, unsigned n) -> seq<decltype(first(xs))> {
   for (auto x: xs) {
-    if (n) continue;
+    if (n) {
+      --n;
+      continue;
+    }
     co_yield x;
-    --n;
   }
 };
 }
