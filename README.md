@@ -1,5 +1,7 @@
 # Conduit
 
+[![Travis](https://img.shields.io/travis/LoopPerfect/conduit.svg)](https://travis-ci.org/LoopPerfect/conduit)
+
 Lazy High Performance Streams using Coroutine TS
 
 Conduit is a utility library for building and transforming, ranges and lazy (infinite) iterable sequences.
