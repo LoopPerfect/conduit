@@ -4,7 +4,7 @@
 #include <experimental/coroutine>
 #include <type_traits>
 #include <cassert>
-#include "meta.hpp"
+#include <conduit/meta.hpp>
 
 namespace conduit {
 

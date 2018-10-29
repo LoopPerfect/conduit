@@ -1,15 +1,15 @@
 #ifndef CONDUIT_CYCLE_HPP
 #define CONDUIT_CYCLE_HPP
 
-#include "meta.hpp"
-#include "seq.hpp"
+#include <conduit/meta.hpp>
+#include <conduit/seq.hpp>
 #include <array>
 #include <type_traits>
 
 namespace conduit {
 
 template<class...Xs>
-auto just(Xs...xs) {
+auto cycle(Xs...xs) {
   if constexpr(sizeof...(xs)>0) {
     using T = std::common_type_t<decltype(xs)...>;
     return [=]() -> seq<T> {

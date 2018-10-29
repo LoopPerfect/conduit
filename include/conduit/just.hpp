@@ -1,13 +1,14 @@
 #ifndef CONDUIT_JUST_HPP
 #define CONDUIT_JUST_HPP
 
-#include "meta.hpp"
-#include "seq.hpp"
+#include <conduit/meta.hpp>
+#include <conduit/seq.hpp>
 #include <array>
 #include <type_traits>
 
 namespace conduit {
 
+/// A sequence of the arguments supplied at compile-time. 
 template<class...Xs>
 auto just(Xs...xs) {
   if constexpr(sizeof...(xs)>0) {
