@@ -1,0 +1,28 @@
+language: cpp
+sudo: true
+dist: trusty
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+      - llvm-toolchain-trusty-7 
+    packages:
+      - clang++-7
+
+before_install:
+- sudo apt-get install -y equivs openjdk-8-jdk
+- wget -O buck.deb https://github.com/facebook/buck/releases/download/v2018.08.27.01/buck.2018.08.27.01_all.deb
+- sudo dpkg -i buck.deb
+- buck --version
+- wget -O buckaroo.deb https://github.com/LoopPerfect/buckaroo/releases/download/v1.4.1/buckaroo.deb
+- sudo dpkg -i buckaroo.deb
+- buckaroo version
+- c++ --version
+- clang++ --version
+- g++ --version
+- gcc --version
+
+script:
+- buckaroo install
+- ./test.sh

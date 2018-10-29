@@ -1,7 +1,0 @@
-cxx_binary(
-  name = 'examples',
-  srcs = glob(['*.cpp']),
-  compiler_flags = ['-fPIC', '-pthread'],
-  linker_flags = ['-pthread'],
-  deps = ['//:conduit', 'google.gtest//:gtest']
-)

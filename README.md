@@ -1,20 +1,23 @@
 # Conduit
+
+[![Travis](https://img.shields.io/travis/LoopPerfect/conduit.svg)](https://travis-ci.org/LoopPerfect/conduit)
+
 Lazy High Performance Streams using Coroutine TS
 
-Conduit is a utility library for building and transforming, ranges and lazy (infinite) iterable sequences.
-Conduit's goals are:
-- expressivity 
-- composability
-- performance
+Conduit is a utility library for building and transforming, ranges and lazy (infinite) iterable sequences. 
 
-and are attained by adopting a monadic interface that leverage zero cost abstractions.
+Conduit's goals are:
+- Expressivity 
+- Composability
+- Performance
+
+These are attained by adopting a monadic interface that leverages zero-cost abstractions.
 
 ## Examples
 
-Use co_yield to define a coroutine and transform it using high level operators.
+Use `co_yield` to define a coroutine and transform it using high level operators.
 
 ```c++
-
 using namespace std;
 using namespace conduit;
 using namespace conduit::operators;
@@ -64,4 +67,4 @@ auto primes = [] {
 
 ## Support
 
-Currently only clang-7 with -fcoroutines-ts is supported.
+Currently only `clang-7` with `-fcoroutines-ts` is supported.

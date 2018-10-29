@@ -1,0 +1,16 @@
+cxx_binary(
+  name = 'fibonacci',
+  srcs = [
+    'main.cpp', 
+  ],
+  compiler_flags = [
+    '-fPIC', 
+    '-pthread', 
+  ],
+  linker_flags = [
+    '-pthread', 
+  ],
+  deps = [
+    '//:conduit', 
+  ], 
+)

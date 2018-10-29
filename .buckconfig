@@ -1,1 +1,5 @@
+[cxx]
+  should_remap_host_platform = true
 
+[repositories]
+  google.gtest = buckaroo/official/google/gtest

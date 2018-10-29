@@ -1,17 +1,17 @@
 cxx_library(
   name = 'conduit',
-  visibility = ['PUBLIC'],
-  header_namespace= '',
-  compiler_flags = [
-    "stdlib=libc++",
-    "-fcoroutine-ts",
-    "-std=c++17"
-  ],
-  exported_linker_flags = [
-    '-lc++'
-  ], 
+  header_namespace =  'conduit',
   exported_headers = subdir_glob([
-    ("include", "**/*.h"),
-    ("include", "**/*.hpp")
-  ])
+    ('include/conduit', '**/*.h'), 
+    ('include/conduit', '**/*.hpp'), 
+  ]), 
+  exported_linker_flags = [
+    '-lc++', 
+  ], 
+  licenses = [
+    'LICENSE', 
+  ], 
+  visibility = [
+    'PUBLIC', 
+  ],
 )

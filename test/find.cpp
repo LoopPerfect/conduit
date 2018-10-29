@@ -16,7 +16,6 @@ TEST(Seq, findOne) {
   }
 
   EXPECT_EQ(needle, 3);
-
 }
 
 TEST(Seq, findNone) {
