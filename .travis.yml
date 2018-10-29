@@ -6,7 +6,7 @@ addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
-      - llvm-toolchain-7
+      - llvm-toolchain-trusty-7 
     packages:
       - clang++-7
 
