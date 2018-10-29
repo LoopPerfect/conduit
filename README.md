@@ -67,4 +67,4 @@ auto primes = [] {
 
 ## Support
 
-Currently only clang-7 with -fcoroutines-ts is supported.
+Currently only `clang-7` with `-fcoroutines-ts` is supported.
