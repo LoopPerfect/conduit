@@ -3,7 +3,7 @@
 #include <memory>
 
 using namespace conduit;
-
+namespace {
 auto seq1() -> seq<int> {
   co_yield 1;
   co_yield 2;
@@ -15,6 +15,7 @@ auto seq2() -> seq<std::unique_ptr<int> > {
   co_yield std::make_unique<int>(1);
   co_yield std::make_unique<int>(2);
   co_yield std::make_unique<int>(3);
+}
 }
 
 

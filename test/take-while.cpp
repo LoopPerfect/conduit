@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include <conduit/count.hpp>
+#include <conduit/range.hpp>
 #include <conduit/take-while.hpp>
 
 using namespace conduit;
@@ -11,7 +11,7 @@ TEST(Seq, takeWhile) {
     return x < 4; 
   });
   
-  for (auto x: transform(count(0))) {
+  for (auto x: transform(range(0))) {
     EXPECT_EQ(i, x);
     ++i;
   }

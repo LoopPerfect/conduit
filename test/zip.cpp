@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include <conduit/count.hpp>
+#include <conduit/range.hpp>
 #include <conduit/zip.hpp>
 #include <conduit/compose.hpp>
 
@@ -7,8 +7,11 @@ using namespace conduit;
 
 TEST(Seq, zip) {
   
-  auto values = zip([](auto x, auto y) { return x+y; },
-      count(0), count(0));
+  auto values = zip(
+    [](auto x, auto y) { return x+y; },
+    range(0), 
+    range(0)
+  );
   
   auto i = 0;
   for (auto x : values) {
@@ -23,9 +26,9 @@ TEST(Seq, zip) {
 
 TEST(Seq, zipWith) {
   using namespace operators; 
-  auto values = count(0) 
-    >> zipWith(factory(count, 0), [](auto x, auto y) { return x+y; })
-    >> zipWith(factory(count, 0), [](auto x, auto y) { return x+y; });
+  auto values = range(0) 
+    >> zipWith(factory(range, 0), [](auto x, auto y) { return x+y; })
+    >> zipWith(factory(range, 0), [](auto x, auto y) { return x+y; });
  
   auto i = 0;
   for (auto x : values) {

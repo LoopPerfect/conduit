@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include <conduit/count.hpp>
+#include <conduit/range.hpp>
 #include <conduit/filter.hpp>
 
 using namespace conduit;
@@ -11,10 +11,8 @@ TEST(Seq, filter) {
     return x > 3; 
   });
   
-  for (auto x : transform(count(0))) {
+  for (auto x : transform(range(0, 8))) {
     EXPECT_EQ(i, x);
-    if (i > 7)
-      break;
     ++i;
   }
 

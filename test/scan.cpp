@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include <conduit/count.hpp>
+#include <conduit/range.hpp>
 #include <conduit/scan.hpp>
 
 using namespace conduit;
@@ -11,10 +11,8 @@ TEST(Seq, scan) {
 
   auto i = 0;
   auto total = 0;
-  for (auto x : sum(count(1))) {
+  for (auto x : sum(range(1, 4))) {
     EXPECT_EQ(total, x);
-    if (i > 3)
-      break;
     ++i;
     total += i;
   }

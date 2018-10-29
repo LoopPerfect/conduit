@@ -1,15 +1,8 @@
 #include "gtest/gtest.h"
-#include <conduit/count.hpp>
+#include <conduit/range.hpp>
 #include <conduit/find.hpp>
 
 using namespace conduit;
-
-auto haystack = []() -> seq<int> {
-  co_yield 1;
-  co_yield 2;
-  co_yield 3;
-  co_yield 4;
-};
 
 TEST(Seq, findOne) {
   
@@ -18,7 +11,7 @@ TEST(Seq, findOne) {
   });
   
   auto needle = 0;
-  for (auto x : transform(haystack())) {
+  for (auto x : transform(range(0, 4))) {
     needle = x;
   }
 
@@ -34,7 +27,7 @@ TEST(Seq, findNone) {
     return x == 10; 
   });
   
-  for (auto x : transform(haystack())) {
+  for (auto x : transform(range(0, 4))) {
     needle = x;
   }
 

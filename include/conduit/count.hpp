@@ -6,12 +6,17 @@
 
 namespace conduit {
 
-auto count = [](auto x = 0) -> seq<decltype(x)> {
-  while (1) {
-    co_yield x;
-    ++x;
-  }
+auto count = [](unsigned long start = 0) {
+  return [start](auto xs) -> seq<unsigned long> {
+    unsigned long i = start;
+    for (auto x: xs) {
+      (void)x;
+      co_yield i;
+      ++i;
+    }
+  };
 };
+
 }
 
 #endif
