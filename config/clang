@@ -1,6 +1,0 @@
-[cxx]
-cxxpp = /usr/bin/clang++-7
-cxx = /usr/bin/clang++-7
-ld = /usr/bin/clang++-7
-cxxflags = -O3 -g3 -fcoroutines-ts -stdlib=libc++ -std=c++17 -Wall -Wpedantic
-cxxlinkerflags = -lc++ -lc++abi
