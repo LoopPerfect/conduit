@@ -44,7 +44,7 @@ for(auto [i, n] : items) {
 
 ```
 
-Construct elaborate algorithms using high-level operators:
+Construct elaborate algorithms using higher order operators:
 
 ```c++
 #define RET(X) { return X; }
