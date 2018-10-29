@@ -4,13 +4,14 @@
 
 Lazy High Performance Streams using Coroutine TS
 
-Conduit is a utility library for building and transforming, ranges and lazy (infinite) iterable sequences.
-Conduit's goals are:
-- expressivity 
-- composability
-- performance
+Conduit is a utility library for building and transforming, ranges and lazy (infinite) iterable sequences. 
 
-and are attained by adopting a monadic interface that leverage zero cost abstractions.
+Conduit's goals are:
+- Expressivity 
+- Composability
+- Performance
+
+These are attained by adopting a monadic interface that leverages zero-cost abstractions.
 
 ## Examples
 
