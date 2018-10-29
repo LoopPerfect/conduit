@@ -8,7 +8,7 @@ addons:
       - ubuntu-toolchain-r-test
       - llvm-toolchain-trusty-7 
     packages:
-      - libc++1
+      - libc++1-7
       - libc++abi1
       - libc++-7-dev
       - clang-7
