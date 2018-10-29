@@ -14,10 +14,9 @@ and are attained by adopting a monadic interface that leverage zero cost abstrac
 
 ## Examples
 
-Use co_yield to define a coroutine and transform it using high level operators.
+Use `co_yield` to define a coroutine and transform it using high level operators.
 
 ```c++
-
 using namespace std;
 using namespace conduit;
 using namespace conduit::operators;
