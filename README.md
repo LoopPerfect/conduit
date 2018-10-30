@@ -13,6 +13,34 @@ Conduit's goals are:
 
 These are attained by adopting a monadic interface that leverages zero-cost abstractions.
 
+## Build
+
+To fetch dependencies (only required for testing and benchmarks): 
+
+```bash=
+buckaroo install
+```
+
+To build the library: 
+
+```bash=
+buck build :conduit
+```
+
+To run the examples: 
+
+```bash=
+buck run examples/primes
+buck run examples/fibonacci
+# etc...
+```
+
+To run the tests: 
+
+```bash=
+buck test test
+```
+
 ## Examples
 
 Use `co_yield` to define a coroutine and transform it using high-level operators.
