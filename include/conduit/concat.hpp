@@ -12,17 +12,17 @@ auto concat(Xs&& xs) -> Xs&& {
   return FWD(xs);
 }
  
-template<class Xs, class...Ys>
-auto concat(Xs xs, Ys... ys) -> seq<decltype(first(xs))> {
+template<class Xs, class Ys>
+auto concat(Xs xs, Ys ys) -> seq<decltype(first(xs))> {
   for (auto x : xs) {
     co_yield x;
   }
 
-  if constexpr (sizeof...(ys)) {
-    for (auto x : concat(std::move(ys)...)) {
+  //if constexpr (sizeof...(ys)) {
+    for (auto x : ys){//concat(std::move(ys)...)) {
       co_yield x;
     }
-  }
+  //}
 }
 
 }
