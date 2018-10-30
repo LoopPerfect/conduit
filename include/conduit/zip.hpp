@@ -1,8 +1,8 @@
 #ifndef CONDUIT_ZIP_HPP
 #define CONDUIT_ZIP_HPP
 
-#include "meta.hpp"
-#include "seq.hpp"
+#include <conduit/meta.hpp>
+#include <conduit/seq.hpp>
 #include <tuple>
 
 namespace conduit {

@@ -1,8 +1,8 @@
 #ifndef CONDUIT_FIND_HPP
 #define CONDUIT_FIND_HPP
 
-#include "meta.hpp"
-#include "seq.hpp"
+#include <conduit/meta.hpp>
+#include <conduit/seq.hpp>
 
 namespace conduit {
 namespace F {

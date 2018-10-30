@@ -5,7 +5,6 @@
 #define FWD(x) std::forward<decltype(x)>(x)
 
 namespace conduit {
-
 template <class T>
 T id(T const& x) {
   return x;

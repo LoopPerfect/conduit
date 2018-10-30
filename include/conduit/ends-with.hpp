@@ -1,7 +1,7 @@
 #ifndef CONDUIT_ENDS_WITH_HPP
 #define CONDUIT_ENDS_WITH_HPP
 
-#include "concat.hpp"
+#include <conduit/concat.hpp>
 
 namespace conduit {
 

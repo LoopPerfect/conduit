@@ -1,8 +1,8 @@
 #ifndef CONDUIT_JUST_HPP
 #define CONDUIT_JUST_HPP
 
-#include "meta.hpp"
-#include "seq.hpp"
+#include <conduit/meta.hpp>
+#include <conduit/seq.hpp>
 #include <array>
 #include <type_traits>
 
