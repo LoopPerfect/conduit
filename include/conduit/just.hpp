@@ -8,6 +8,7 @@
 
 namespace conduit {
 
+/// A sequence of the arguments supplied at compile-time. 
 template<class...Xs>
 auto just(Xs...xs) {
   if constexpr(sizeof...(xs)>0) {

@@ -11,7 +11,6 @@ using namespace std::experimental;
 
 namespace conduit {
 
-
 template<class T>
 struct seq;
 

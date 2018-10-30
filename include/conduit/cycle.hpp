@@ -9,7 +9,7 @@
 namespace conduit {
 
 template<class...Xs>
-auto just(Xs...xs) {
+auto cycle(Xs...xs) {
   if constexpr(sizeof...(xs)>0) {
     using T = std::common_type_t<decltype(xs)...>;
     return [=]() -> seq<T> {

@@ -5,6 +5,9 @@ cxx_test(
   ]),
   compiler_flags = ['-fPIC', '-pthread'],
   linker_flags = ['-pthread'],
+  platform_linker_flags = [
+    ('linux.*', [ '-lc++', '-lc++abi' ]), 
+  ], 
   deps = [
     '//:conduit', 
     'google.gtest//:gtest', 

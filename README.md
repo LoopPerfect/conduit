@@ -1,6 +1,6 @@
-# Conduit
+# Conduit ⚡
 
-[![Travis](https://img.shields.io/travis/LoopPerfect/conduit.svg)](https://travis-ci.org/LoopPerfect/conduit)
+[![Travis](https://img.shields.io/travis/LoopPerfect/conduit.svg)](https://travis-ci.org/LoopPerfect/conduit) [![Godbolt](https://img.shields.io/badge/Godbolt-playground-blue.svg)](https://godbolt.org/z/7cYRQ5)
 
 Lazy High Performance Streams using Coroutine TS
 
@@ -15,7 +15,7 @@ These are attained by adopting a monadic interface that leverages zero-cost abst
 
 ## Examples
 
-Use `co_yield` to define a coroutine and transform it using high level operators.
+Use `co_yield` to define a coroutine and transform it using high-level operators.
 
 ```c++
 using namespace std;
@@ -44,7 +44,7 @@ for(auto [i, n] : items) {
 
 ```
 
-Construct elaborate algorithms using high level operators:
+Construct elaborate algorithms using higher order operators:
 
 ```c++
 #define RET(X) { return X; }
