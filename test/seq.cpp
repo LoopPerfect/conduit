@@ -2,6 +2,8 @@
 #include <conduit/seq.hpp>
 #include <memory>
 
+#include <conduit/allocators/terminate.hpp>
+
 using namespace conduit;
 namespace {
 auto seq1() -> seq<int> {
@@ -40,7 +42,10 @@ TEST(Seq, foreach) {
 }
 
 TEST(SEQ, moveOnlyType) {
+  int i = 1;
   for(auto&&x : seq2()) {
-
+     EXPECT_EQ(*x, i);
+     ++i;
   }
+  EXPECT_EQ(i, 4);
 }

@@ -3,9 +3,13 @@
 #include <conduit/zip.hpp>
 #include <conduit/compose.hpp>
 
+// FIXME: get rid of this allocation
+#include <conduit/allocators/counter.hpp>
+
 using namespace conduit;
 
 TEST(Seq, zip) {
+  reset_alloc_counter();
   
   auto values = zip(
     [](auto x, auto y) { return x+y; },
@@ -21,10 +25,13 @@ TEST(Seq, zip) {
     ++i;
   }
 
-  EXPECT_EQ(i, 4);
+  EXPECT_EQ(i, 4);  
+  EXPECT_EQ(get_alloc_counter(), 2);
 }
 
 TEST(Seq, zipWith) {
+  reset_alloc_counter();
+  
   using namespace operators; 
   auto values = range(0) 
     >> zipWith(factory(range, 0), [](auto x, auto y) { return x+y; })
@@ -39,4 +46,5 @@ TEST(Seq, zipWith) {
   }
 
   EXPECT_EQ(i, 4);
+  EXPECT_EQ(get_alloc_counter(), 4);
 }

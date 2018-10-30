@@ -2,6 +2,8 @@
 #include <conduit/range.hpp>
 #include <conduit/find.hpp>
 
+#include <conduit/allocators/terminate.hpp>
+
 using namespace conduit;
 
 TEST(Seq, findOne) {

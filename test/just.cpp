@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <conduit/just.hpp>
+#include <conduit/allocators/terminate.hpp>
 
 using namespace conduit;
 

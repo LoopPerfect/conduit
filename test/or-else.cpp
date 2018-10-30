@@ -4,6 +4,10 @@
 #include <conduit/map.hpp>
 #include <conduit/compose.hpp>
 
+#if FIXME_MAKE_FLATMAP_ZERO_COST
+#include <conduit/allocators/terminate.hpp>
+#endif
+
 using namespace conduit;
 using namespace operators;
 

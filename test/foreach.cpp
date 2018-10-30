@@ -3,6 +3,8 @@
 #include <conduit/foreach.hpp>
 #include <conduit/compose.hpp>
 
+#include <conduit/allocators/terminate.hpp>
+
 using namespace conduit;
 using namespace operators;
 TEST(Seq, forEach) {

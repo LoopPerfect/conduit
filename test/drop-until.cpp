@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <conduit/range.hpp>
 #include <conduit/drop-until.hpp>
+#include <conduit/allocators/terminate.hpp>
 
 using namespace conduit;
 

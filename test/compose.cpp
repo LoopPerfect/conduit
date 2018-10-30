@@ -5,6 +5,8 @@
 #include <conduit/map.hpp>
 #include <vector>
 
+#include <conduit/allocators/terminate.hpp>
+
 using namespace conduit;
 TEST(Seq, compose) {
   auto i = 0;
@@ -28,16 +30,15 @@ TEST(Seq, composeTree) {
 
   auto T1 = compose(
     map([](auto x) { return x + 1; }),
-    map([](auto x) { return x + 1; }),
     map([](auto x) { return x + 1; })
   );
 
-  auto T2 = compose(T1, T1, T1);
+  auto T2 = compose(T1, T1);
 
   auto values = T2(range(0, 4));
 
-  while(values.next()) {
-  EXPECT_EQ(i + 9, values.get());
+  for(auto x: values) {
+    EXPECT_EQ(i + 4, x);
     ++i;
   }
 
