@@ -1,9 +1,8 @@
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 #include <conduit/compose.hpp>
 #include <conduit/starts-with.hpp>
 #include <conduit/ends-with.hpp>
 
-#include <conduit/allocators/terminate.hpp>
 using namespace conduit;
 
 namespace {
@@ -27,23 +26,12 @@ auto seq3 = []() -> seq<int> {
 };
 }
 
-template<class Xsf, class Ysf>
-auto concat2(Xsf xsf, Ysf ysf) -> decltype(xsf()) {
-  for(auto x: xsf()) {
-    co_yield x;
-  }
-
-  for(auto x: ysf()) {
-    co_yield x;
-  }
-}
-
 TEST(Seq, concat) {
   using namespace operators;
 
-  auto items = concat2(seq1, seq2); // seq2()
- //   >> startsWith(seq1)
- //   >> endsWith(seq3);
+  auto items = seq2()
+    >> startsWith(seq1)
+    >> endsWith(seq3);
   
   int i = 1;
   for(auto x: items) {
@@ -60,7 +48,7 @@ TEST(Seq, concat2) {
   using namespace operators;
 
   auto items = seq2()
- //   >> endsWith(seq3)
+    >> endsWith(seq3)
     >> startsWith(seq1);
   
   int i = 1;
