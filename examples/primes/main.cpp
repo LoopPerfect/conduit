@@ -23,11 +23,13 @@ using namespace operators;
 
 #define RET(X) { return X; }
 
+
 auto primes = [] {
   return range()
     >> map([](auto i) RET(3+i*2) ) // create a seqence of odd nums > 2
     >> flatMap([primes = vector<int>()](auto c) mutable RET ( 
       primes // divide each candidate by the primes we encountered
+        >> take(primes.size())
         >> find([c](auto p) RET (c % p == 0)) // search and stop if divisible
         >> count() // find yields at most 1 element, count how many we got (starts with zero)
         >> orElse(just(c)) // if we didn't find any, its a prime. yield it
@@ -35,12 +37,14 @@ auto primes = [] {
         >> forEach([&](auto p) {
           primes.push_back(p);  // update list of primes
         }) // Note: lifetime of primes-vector is bound to the coroutine  
-    )) >> startsWith(just(2)); // two is the only even prime
+    )) 
+    
+    >> startsWith(just(2)); // two is the only even prime
 };
 
 int main() {
   auto items = primes() 
-    >> take(5)
+    >> take(10)
     >> zipWith(range, [](auto x, auto y) { 
       return tuple{x, y};
     });

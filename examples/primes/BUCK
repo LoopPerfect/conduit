@@ -8,7 +8,7 @@ cxx_binary(
     '-pthread', 
   ],
   linker_flags = [
-    '-pthread', 
+    '-pthread',
   ],
   deps = [
     '//:conduit', 
