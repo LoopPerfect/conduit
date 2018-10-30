@@ -1,5 +1,13 @@
 #ifndef CONDUIT_ALLOCATORS_COUNTING_HPP
 #define CONDUIT_ALLOCATORS_COUNTING_HPP
+
+#ifdef CONDUIT_CUSTOM_ALLOCATOR
+#error "Only one custom allocator may be defined"
+#endif
+
+#define CONDUIT_CUSTOM_ALLOCATOR 1
+
+#include <conduit/allocators/default.hpp>
 #include <conduit/seq.hpp>
 
 namespace conduit {

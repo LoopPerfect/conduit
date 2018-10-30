@@ -4,7 +4,8 @@ def merge_dicts(x, y):
   return z
 
 headers = subdir_glob([
-  ('include/conduit', 'include/conduit/*.hpp')
+  ('include/conduit', '*.hpp'), 
+  ('include/conduit', 'allocators/default.hpp'), 
 ])
 
 mega_header = '\n'.join([
