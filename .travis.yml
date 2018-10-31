@@ -1,19 +1,21 @@
 language: cpp
+
 sudo: true
+
 dist: trusty
 
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
-      - llvm-toolchain-trusty-7 
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-trusty-7
     packages:
-      - libc++-7-dev
-      - libc++1-7
-      - libc++abi-7-dev
-      - libc++abi1-7
-      - clang-7
-      - clang++-7
+    - libc++-7-dev
+    - libc++1-7
+    - libc++abi-7-dev
+    - libc++abi1-7
+    - clang-7
+    - clang++-7
 
 before_install:
 - sudo apt-get install -y equivs openjdk-8-jdk
@@ -30,16 +32,14 @@ before_install:
 
 script:
 - buckaroo install
-- ./test.sh
+- "./test.sh"
 - buck build :bundle
 
 deploy:
   provider: releases
   api_key:
-    secure: fKnFdbsFZqotefPp0VrAN3CnUWsjizAs0Jnr71ZhrAX6yv82bJwa0sy3TPdWeGQcMEGWaEZYU/t1ovZ2NX1uVrkNXv9BI1GMiJdkM7IVVZ1tUYskmfr9Xvtgr84AVJbsKu775r84jUQ3/wNw2FeDBvvPbZ/1WM1nN4XaKup5rpjIU01uc1Xyzz4PhuaT4LXP7lQ82uV838cDGFn2le9AKtCLlcI5+fe6/ttjGm+46m32xSIwwbuzFNdO/Epw4TEq+VbFeoRSKmxENXa70I4CXxqaKcmSxvS5yRmQQENjNYqNXmI6Gx/9Ro7lJMni7P7jPGyh5G4G/s9UEhHefklecIgsq/eXuGprN5NcBJIOvZP5dReMR/9zAonzI4qS0V2/igoZau5VEH/twhCA2nOk4pTLRFsLbBibs2JmT6WTbAMsJuliae4EvivdQ+b99TphxTJia3EPTd2THwOfvHJ1zEc23Vgd7B7j5laVE9G553i03U/d7Cc3KNDt7yz+VDOVxm1f2CxhD1KpmQ93TDe42oNs96bcABtEQyi7IJZNz8zClBSyF1e1HwdImNojlYHnT5EkguVNpCm45dVcecHLGTvlWTkNY6J+6Br6s6BEGWTiEZDHngsi0PJ4S8La1wBJ0UGdHfxvijtAmqfCZoRUPLwDkIb/meZ7Eav/VYTIu4A=
-  file_glob: true
-  file:
-    - "buck-out/gen/bundle/bundle.zip"
+    secure: PAn4Y1/C0ruGE7Bsv7sr3sXuC0G7UrXxUafBeaIsgA4shvNqOqZIzBh8cSo23lABzkVASoEHwmj6RdII+o0XFwccFb0904AhIvZAbKWEdjvbLC1ierRUwpBa4CmW/6uybhaxm7T2GsYdMiAe+YCFWhn6UlN2vpoffsPe1MUNPlC/EeKP24i0p9kQuPgWPMmGAStzcCxtbDwexOZdHM8kGoTS2pEPBVNtv8131KBPbEvHzGgvDZVjfNFi6Ns+KkWx3BbLa/QPyv1CoV7wbjmnm3E85Fwz1F2KcesGIlOwOBkMeUawrdkI+OyZD4Qvsc9Bdf0QbD+j2mOp5HxSakxmNNqR9MzCrwN6BJNTg1EQ0VLvBjzg6HP1/9Pd8W8jTlPYGkZvGzn8KWGCQuavTv0smGUaI4oJgmnUTkvlU0SfzY/Ea7HR0/Erps2sKHxnKGEUcw9qiwDiMHtqU80SehiI0Rmx0M+ByOl0hGgCwQISnlLHknDxc/srbmWe63bOiDBBqY0MIo0d8S2VQjs9lMmrmR6oY5rIHqdfX5Ksvwbh7MYnALfvEaeMnYgWUnewYh06SC88iSMU8lU56ASBBxIMY3kuxuTl4+WmtUjKP38rhSPgIrN0MQ7r4Bl4F7JjCKOSbHGiQFnkDMrkOm5XsLjgkKla7+37Y8CiWdGTGTPFnpY=
+  file: "./buck-out/gen/bundle/bundle.zip"
   skip_cleanup: true
   on:
     repo: LoopPerfect/conduit
