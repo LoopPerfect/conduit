@@ -25,7 +25,7 @@ auto compose(F f, Fs... fs) {
 namespace operators {
 template <class Xs, class F>
 auto operator >> (Xs&& xs, F&& f)
-  -> decltype(xs.begin(), f(FWD(xs)).begin(), f(FWD(xs))) {
+  -> decltype(xs.begin(), f(FWD(xs))) {
   return f(FWD(xs));
 }
 
