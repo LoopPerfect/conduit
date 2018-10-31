@@ -42,6 +42,19 @@ cxx_library(
   ],
 )
 
+cxx_genrule(
+  name = 'conduit-unity',
+  srcs = glob(['include/**/*.hpp']),
+  out = 'conduit-unity.hpp',
+  cmd = '&&'.join([
+    'cp -r $SRCDIR/. $TMP',
+    'cd $TMP',
+    'find -name \'*.hpp\' -exec sed -i \'/#include\s*<\s*conduit/! s/#include/##include/g\' {} +',
+    '$(cxx) -E -P -Iinclude $(cppflags) -xc++ $(location :mega-header) > $OUT',
+    'sed -i \'s/##include/#include/g\' $OUT',
+  ])
+)
+
 genrule(
   name = 'bundle', 
   out = 'bundle.zip', 
