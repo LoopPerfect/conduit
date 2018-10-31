@@ -41,3 +41,17 @@ cxx_library(
     'PUBLIC', 
   ],
 )
+
+genrule(
+  name = 'bundle', 
+  out = 'bundle.zip', 
+  srcs = glob([
+    'include/conduit/**/*.hpp', 
+  ]), 
+  cmd = ' && '.join([
+    'cp -r $SRCDIR/. $TMP', 
+    'cp $(location :mega-header) $TMP/include/conduit/conduit.hpp', 
+    'cd $TMP', 
+    'zip -r $OUT .', 
+  ]), 
+)

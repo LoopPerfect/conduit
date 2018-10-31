@@ -31,3 +31,4 @@ before_install:
 script:
 - buckaroo install
 - ./test.sh
+- buck build :bundle
