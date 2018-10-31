@@ -34,12 +34,15 @@ script:
 - buckaroo install
 - "./test.sh"
 - buck build :bundle
+- buck build :conduit-unity#linux-x86_64
 
 deploy:
   provider: releases
   api_key:
     secure: PAn4Y1/C0ruGE7Bsv7sr3sXuC0G7UrXxUafBeaIsgA4shvNqOqZIzBh8cSo23lABzkVASoEHwmj6RdII+o0XFwccFb0904AhIvZAbKWEdjvbLC1ierRUwpBa4CmW/6uybhaxm7T2GsYdMiAe+YCFWhn6UlN2vpoffsPe1MUNPlC/EeKP24i0p9kQuPgWPMmGAStzcCxtbDwexOZdHM8kGoTS2pEPBVNtv8131KBPbEvHzGgvDZVjfNFi6Ns+KkWx3BbLa/QPyv1CoV7wbjmnm3E85Fwz1F2KcesGIlOwOBkMeUawrdkI+OyZD4Qvsc9Bdf0QbD+j2mOp5HxSakxmNNqR9MzCrwN6BJNTg1EQ0VLvBjzg6HP1/9Pd8W8jTlPYGkZvGzn8KWGCQuavTv0smGUaI4oJgmnUTkvlU0SfzY/Ea7HR0/Erps2sKHxnKGEUcw9qiwDiMHtqU80SehiI0Rmx0M+ByOl0hGgCwQISnlLHknDxc/srbmWe63bOiDBBqY0MIo0d8S2VQjs9lMmrmR6oY5rIHqdfX5Ksvwbh7MYnALfvEaeMnYgWUnewYh06SC88iSMU8lU56ASBBxIMY3kuxuTl4+WmtUjKP38rhSPgIrN0MQ7r4Bl4F7JjCKOSbHGiQFnkDMrkOm5XsLjgkKla7+37Y8CiWdGTGTPFnpY=
-  file: "./buck-out/gen/bundle/bundle.zip"
+  file: 
+    - "./buck-out/gen/bundle/bundle.zip"
+    - "./buck-out/gen/mono-header.hpp#linux-x86_64/conduit-unity.hpp"
   skip_cleanup: true
   on:
     repo: LoopPerfect/conduit
