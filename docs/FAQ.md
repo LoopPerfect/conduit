@@ -21,6 +21,8 @@ Rx allows you to build and transform *push* based data processing pipelines. Con
 
 Range-V3 focuses on implementing an API compatible with the Ranges-TS. Although there is some intersection between Range-V3 and Conduit's Sequences API, Conduit's API is much leaner. This enables more composability and compiler optimizations. 
 
+Furthermore Range-V3 implements every operation using templates, leading to a unique type for each iterator/container constructed. This leads to large compile times. In Conduit every operation returns a `seq<T>`.
+
 ### Why does `seq` not implement `.base()` ? 
 
 `.base()` returns the pointer to the original iterator. For example: 
