@@ -1,6 +1,7 @@
 # Conduit ⚡
 
-[![Travis](https://img.shields.io/travis/LoopPerfect/conduit.svg)](https://travis-ci.org/LoopPerfect/conduit) [![Godbolt](https://img.shields.io/badge/Godbolt-playground-blue.svg)](https://godbolt.org/z/7cYRQ5)
+[![Travis](https://img.shields.io/travis/LoopPerfect/conduit.svg)](https://travis-ci.org/LoopPerfect/conduit) 
+[![Godbolt](https://img.shields.io/badge/Godbolt-playground-blue.svg)](https://godbolt.org/z/U06i6K)
 
 Lazy High Performance Streams using Coroutine TS
 
