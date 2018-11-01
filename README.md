@@ -14,6 +14,10 @@ Conduit's goals are:
 
 These are attained by adopting a monadic interface that leverages zero-cost abstractions.
 
+## Install
+
+Download the header-only library bundle from the [releases page](https://github.com/LoopPerfect/conduit/releases). 
+
 ## Build
 
 To fetch dependencies (only required for testing and benchmarks): 
