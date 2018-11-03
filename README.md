@@ -106,4 +106,4 @@ MSVC support should be added in the near future.
 
 ## Contributions Welcome!
 
-Head over to our [issue tracker](https://github.com/LoopPerfect/conduit/issues) where Conduit is heading.
+Head over to our [issue tracker](https://github.com/LoopPerfect/conduit/issues) to get involved in Conduit's development.
