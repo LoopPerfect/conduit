@@ -101,3 +101,7 @@ auto primes = [] {
 ## Support
 
 Currently only `clang-7` with `-fcoroutines-ts` is supported.
+
+## Contributions Welcome!
+
+Head over to our [issue tracker](https://github.com/LoopPerfect/conduit/issues) where Conduit is heading.
