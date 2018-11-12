@@ -1,4 +1,6 @@
-![](conduit.svg)
+<p align="center">
+  <img src="conduit.svg">
+</p>
 
 # Conduit ⚡
 
