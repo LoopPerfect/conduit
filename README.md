@@ -16,6 +16,10 @@ Conduit's goals are:
 
 These are attained by adopting a monadic interface that leverages zero-cost abstractions.
 
+## Install
+
+Download the header-only library bundle from the [releases page](https://github.com/LoopPerfect/conduit/releases). 
+
 ## Build
 
 To fetch dependencies (only required for testing and benchmarks): 
@@ -99,3 +103,9 @@ auto primes = [] {
 ## Support
 
 Currently only `clang-7` with `-fcoroutines-ts` is supported.
+
+MSVC support should be added in the near future.
+
+## Contributions Welcome!
+
+Head over to our [issue tracker](https://github.com/LoopPerfect/conduit/issues) to get involved in Conduit's development.
