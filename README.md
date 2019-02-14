@@ -22,23 +22,29 @@ These are attained by adopting a monadic interface that leverages zero-cost abst
 
 Download the header-only library bundle from the [releases page](https://github.com/LoopPerfect/conduit/releases). 
 
+If you are using [Buckaroo](https://buckaroo.pm): 
+
+```bash
+buckaroo add github.com/LoopPerfect/conduit@branch=master
+```
+
 ## Build
 
 To fetch dependencies (only required for testing and benchmarks): 
 
-```bash=
+```bash
 buckaroo install
 ```
 
 To build the library: 
 
-```bash=
+```bash
 buck build :conduit
 ```
 
 To run the examples: 
 
-```bash=
+```bash
 buck run examples/primes
 buck run examples/fibonacci
 # etc...
@@ -46,8 +52,8 @@ buck run examples/fibonacci
 
 To run the tests: 
 
-```bash=
-buck test test
+```bash
+buck test //...
 ```
 
 ## Examples
@@ -74,7 +80,8 @@ auto items = fib()
     return tuple{x, y};
   });
 
-int vals[] = {0,1,1,2,3,5};
+int vals[] = { 0, 1, 1, 2, 3, 5 };
+
 for(auto [i, n] : items) {
   EXPECT_EQ(vals[i], n);
 }
@@ -85,6 +92,7 @@ Construct elaborate algorithms using higher order operators:
 
 ```c++
 #define RET(X) { return X; }
+
 // sieve of eratosthenes
 auto primes = [] {
   return range()
